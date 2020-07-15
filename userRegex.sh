@@ -51,6 +51,20 @@ function validMobile()
 	fi
 
 }
+
+function validPassword()
+{
+	password=$1
+	passpat1="^([a-zA-Z0-9@#!]){8,}$";
+	if [[ $password =~ $passpat1   ]]
+	then
+        	echo "Perfect password"
+	else
+	  echo "Your password should be of 8 length";
+	fi
+
+}
+
 echo "Welcome to User Registration"
 read -p "Enter first name " fname
 validFirstName $fname
@@ -63,3 +77,6 @@ validEmail $email
 
 read -p "Enter mobile number: " mobile
 validMobile "$mobile"
+
+read -p "Enter the password: " password
+validPassword $password
