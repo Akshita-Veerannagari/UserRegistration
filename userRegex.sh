@@ -57,14 +57,20 @@ function validPassword()
 	password=$1
 	passpat1="^([a-zA-Z0-9@#!]){8,}$";
 	passpat2="^([a-z0-9@#!]*)[[:upper:]]+([a-z0-9@#!]*)$";
+	passpat3="^[a-zA-Z@#!]*[0-9]+[a-zA-Z@#!]*$";
 	if [[ $password =~ $passpat1   ]]
 	then
-		if [[ $password =~ $passpat2  ]]
-		then
-        		echo "Perfect password"
-		else
-		    echo "Please enter at least one caps letter";
-		fi
+	  if [[ $password =~ $passpat2  ]]
+	  then
+	     if [[ $password =~ $passpat3  ]]
+	     then
+	        echo "Perfect password"
+	     else
+	       echo "Please enter at least one digit";
+	     fi
+	  else
+	    echo "Please enter at least one caps letter";
+	  fi
 	else
 	  echo "Your password should be of 8 length";
 	fi
