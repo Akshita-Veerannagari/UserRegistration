@@ -13,6 +13,22 @@ function validFirstName()
 
 }
 
+function validLastName()
+{
+	lname=$1
+	lnamepattern="^([[:upper:]]){1}[[:lower:]]{2,}$"
+	if [[ $lname =~ $lnamepattern  ]]
+	then
+	  echo "Valid last name";
+	else
+	  echo "Invalid last name";
+	fi
+
+}
+
 echo "Welcome to User Registration"
 read -p "Enter first name " fname
 validFirstName $fname
+
+read -p "Enter first name " lname
+validLastName $lname
