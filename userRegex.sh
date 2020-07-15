@@ -38,6 +38,19 @@ function validEmail()
 	fi
 
 }
+
+function validMobile()
+{
+	mobile=$1
+	mobpattern="^[0-9]{2}[[:space:]][0-9]{10}$";
+	if [[ $mobile =~ $mobpattern ]]
+	then
+	  echo "Valid mobile number"
+	else
+	  echo "Invalid mobile number"
+	fi
+
+}
 echo "Welcome to User Registration"
 read -p "Enter first name " fname
 validFirstName $fname
@@ -47,3 +60,6 @@ validLastName $lname
 
 read -p "Enter email address: " email
 validEmail $email
+
+read -p "Enter mobile number: " mobile
+validMobile "$mobile"
