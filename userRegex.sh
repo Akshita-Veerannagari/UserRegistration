@@ -58,13 +58,19 @@ function validPassword()
 	passpat1="^([a-zA-Z0-9@#!]){8,}$";
 	passpat2="^([a-z0-9@#!]*)[[:upper:]]+([a-z0-9@#!]*)$";
 	passpat3="^[a-zA-Z@#!]*[0-9]+[a-zA-Z@#!]*$";
-	if [[ $password =~ $passpat1   ]]
+	passpattern4="^([a-zA-Z0-9]*)[@!#%<>()/?&*]{1}([a-zA-Z0-9]*)$";
+	if [[ $password =~ $passpattern1   ]]
 	then
-	  if [[ $password =~ $passpat2  ]]
+	  if [[ $password =~ $passpattern2  ]]
 	  then
-	     if [[ $password =~ $passpat3  ]]
+	     if [[ $password =~ $passpattern3  ]]
 	     then
-	        echo "Perfect password"
+       		if [[ $password =~ $passpattern4  ]]
+      	        then
+        	echo "Perfect password"
+	       else
+	         echo "There should be one special char";
+	        fi
 	     else
 	       echo "Please enter at least one digit";
 	     fi
@@ -74,7 +80,6 @@ function validPassword()
 	else
 	  echo "Your password should be of 8 length";
 	fi
-
 
 }
 
